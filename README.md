@@ -1,6 +1,8 @@
 # Vandamme
 
-TODO: Write a gem description
+[![Dependency Status](https://gemnasium.com/tech-angels/vandamme.png)](https://gemnasium.com/tech-angels/vandamme)
+
+Vandamme is a changelog parser gem, used in the [Gemnasium project](https://gemnasium.com)
 
 ## Installation
 
@@ -18,7 +20,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The Parser initializer will use 3 options:
+
+* **:changelog**: full raw content of the changelog file
+* **:version_header_exp**: regexp to match the versions lines in changelog
+* **:format** (*optional*): if you want to use the html converter, you must provide the original format of the changelog
+
+## Examples
+
+```ruby
+require 'rubygems'
+require 'vandamme'
+require 'open-uri'
+changelog = open('https://raw.github.com/flori/json/master/CHANGES').read
+parser = Vandamme::Parser.new(changelog: changelog, version_header_exp: '\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)', format: 'markdown')
+parser.parse
+```
+will return a hash with each version as keys, and version content as value.
+The hash can be converted to html (using the [github-markup](https://github.com/github/markup) gem):
+
+```ruby
+parser.to_html
+```
+
+Vandamme is bundled with Redcarpet by default (for markdown), you must add the necessary gems to your bundle if you want to handle more formats.
 
 ## Contributing
 
