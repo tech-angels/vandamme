@@ -7,7 +7,7 @@ module Vandamme
     # Create a new changelog parser
     #
     # Options:
-    # * +file_uri+: uri of file to be parsed
+    # * +changelog+: uri of file to be parsed
     # * +version_header_exp+: regexp to match the starting line of version
     # * +format+: (optional). One of "raw", "markdown", "rdoc"
     #
