@@ -68,4 +68,44 @@ describe Vandamme::Parser do
       expect(@parser.to_html).to eq(changelog_as_html_hash)
     end
   end
+
+  context "with changelog changing convention (md)" do
+    let(:changelog_file) { 
+      <<-eos
+# Version 1.0.0 - 2013-01-06
+
+* First stable version.
+
+# Release 0.9.9
+
+* Last Beta before stable.
+      eos
+      }
+    let(:changelog_as_hash) {
+      {
+        "1.0.0" => "* First stable version.\n",
+        "0.9.9" => "* Last Beta before stable.\n"
+      }
+    }
+
+    let(:changelog_as_html_hash) {
+      {
+        "1.0.0" => "<ul>\n<li>First stable version.</li>\n</ul>\n",
+        "0.9.9" => "<ul>\n<li>Last Beta before stable.</li>\n</ul>\n"
+      }
+    }
+
+    before do
+      @parser = Vandamme::Parser.new(changelog: changelog_file, version_header_exp: '# (Version|Release) (\d.\d+\.\d+)( - \d{4}-\d{2}-\d{2})?', format: 'md', match_group: 1)
+      @changelog_parsed = @parser.parse
+    end
+
+    it "should parse file and fill changelog hash" do
+      expect(@changelog_parsed).to eq(changelog_as_hash)
+    end
+
+    it "should provide html content" do
+      expect(@parser.to_html).to eq(changelog_as_html_hash)
+    end
+  end
 end

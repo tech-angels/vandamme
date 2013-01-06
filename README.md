@@ -25,7 +25,44 @@ The Parser initializer will use 3 options:
 
 * **:changelog**: full raw content of the changelog file
 * **:version_header_exp**: regexp to match the versions lines in changelog
-* **:format** (*optional*): if you want to use the html converter, you must provide the original format of the changelog
+* **:format** (*optional*): if you want to use the html converter, you must provide the original format of the changelog. (default: 'raw')
+* **:group_match** (*optional*): Number of the match group is used for version matching. (default: 0)
+
+### Regex format
+
+**version_header_exp** will be converted to a new Regex object if it wasn't one.
+Therefore, 
+
+    Vandamme::Parser.new(changelog: changelog, version_header_exp: '\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)')
+
+is equivalent to:
+
+    Vandamme::Parser.new(changelog: changelog, version_header_exp: /\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)/)
+
+Be careful with how ruby is handling escaped caracters in a string: ```"\d"``` if different from ```'\d'```!
+
+### Version Matching
+
+By default, the first match of the Regexp will be considered as the version number.
+ie:
+
+    'Release (\d+\.\d+\.\d+)'
+
+will match lines like:
+
+    Release 1.3.5
+
+and '1.3.5' will be used as a key in the Hash returned by the ```parse``` method.
+Starting Vandamme 0.0.2, it's possible to specify which match group must be
+used for the version number, by passing the option **:match_group** to the
+initializer:
+
+    Vandamme::Parser.new([...], :matching_group => 1)
+
+The default match group is 0: this is the first group matched (0 being the
+original string), because we are using ```String#scan``` instead of
+```Regexp.match```.
+
 
 ## Examples
 
@@ -53,3 +90,10 @@ Vandamme is bundled with Redcarpet by default (for markdown), you must add the n
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Credits
+
+  Philippe Lafoucrière @ Tech-angels - http://www.tech-angels.com/
+
+  [![Tech-Angels](http://media.tumblr.com/tumblr_m5ay3bQiER1qa44ov.png)](http://www.tech-angels.com)
+
