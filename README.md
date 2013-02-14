@@ -3,7 +3,20 @@
 [![Dependency Status](https://gemnasium.com/tech-angels/vandamme.png)](https://gemnasium.com/tech-angels/vandamme)
 [![Build Status](https://travis-ci.org/tech-angels/vandamme.png?branch=master)](https://travis-ci.org/tech-angels/vandamme)
 
-Vandamme is a changelog parser gem, used in the [Gemnasium project](https://gemnasium.com)
+Vandamme is a changelog parser gem, used in the [Gemnasium](https://gemnasium.com) project.
+
+There are thousands of different changelogs (if any) out there, with dozens of diffent names. 
+It's almost impossible to fetch and parse them automatically... Gemnasium is using Vandamme to 
+keep each changelog specificities (changelog location, version format, file format).
+
+We really believe in changelogs. Following changes in dependencies is a hard task, and almost impossible only
+by reading commits only.
+
+The opensource world would be so much nicer with full, readable and comprehensive changelogs. 
+As a solution to this problem, we propose a simple set of rules and requirements to follow in order to have a 
+Standard Changelog. Please see the [Changelogs Convention](#changelogs-convention) section below.
+
+Stay aware of changes!
 
 ## Installation
 
@@ -60,8 +73,7 @@ initializer:
     Vandamme::Parser.new([...], :matching_group => 1)
 
 The default match group is 0: this is the first group matched (0 being the
-original string), because we are using ```String#scan``` instead of
-```Regexp.match```.
+original string), because we are using ```String#scan``` instead of ```Regexp.match```.
 
 
 ## Examples
@@ -82,6 +94,49 @@ parser.to_html
 ```
 
 Vandamme is bundled with Redcarpet by default (for markdown), you must add the necessary gems to your bundle if you want to handle more formats.
+
+## Changelogs Convention
+
+### Filename
+
++ Your changelog file **MUST** be named CHANGELOG.format (preferably ```CHANGELOG.md```)
++ Your changelog file **MUST** be at the root of your project
++ You **MAY** have different changelog in each branch (like [Ruby on Rails](https://github.com/rails/rails))
+
+### Format
+
++ Your changelog **MUST** be in plain text formatting syntax. 
++ You **MUST** use one the supported markup: https://github.com/github/markup#markups 
++ You **MAY** prefer Markdown (.md) is now the most popular format for READMEs on Github, let's stick to it.
++ Your changelog **MUST** follow the format:
+
+```
+LEVEL 1 HEADER WITH VERSION AND RELEASE DATE
+
+VERSION CHANGES
+
+LEVEL 1 HEADER WITH VERSION AND RELEASE DATE
+
+VERSION CHANGES
+
+[...]
+```
+
+Example in Markdown: 
+
+```markdown
+# 1.2.3 / 2013-02-14
+
+* Update API 
+* Fix bug #1
+```
+
++ LEVEL 1 HEADER WITH VERSION AND RELEASE DATE **MUST** of the form ```{{version_number}} / {{release_date}}```
++ VERSION CHANGES **MAY** contain more levels, but MUST follow the markup syntax.
+
+### Note
+
+Changelogs following these rules will be automatically included in Gemnasium.
 
 ## Contributing
 
