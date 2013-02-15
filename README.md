@@ -9,7 +9,7 @@ There are thousands of different changelogs (if any) out there, with dozens of d
 It's almost impossible to fetch and parse them automatically... Gemnasium is using Vandamme to 
 keep each changelog specificities (changelog location, version format, file format).
 
-We really believe in changelogs. Following changes in dependencies is a hard task, and almost impossible only
+We really believe in changelogs. Following changes in dependencies is a hard task, and almost impossible
 by reading commits only.
 
 The opensource world would be so much nicer with full, readable and comprehensive changelogs. 
