@@ -5,7 +5,7 @@
 
 Vandamme is a changelog parser gem, used in the [Gemnasium](https://gemnasium.com) project.
 
-There are thousands of different changelogs (if any) out there, with dozens of diffent names. 
+There are thousands of different changelogs (if any) out there, with dozens of different names. 
 It's almost impossible to fetch and parse them automatically... Gemnasium is using Vandamme to 
 keep each changelog specificities (changelog location, version format, file format).
 
