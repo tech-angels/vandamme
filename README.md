@@ -137,6 +137,14 @@ Example in Markdown:
 ### Note
 
 Changelogs following these rules will be automatically included in Gemnasium.
+The regexp used is 
+
+```
+([0-9\.A-Za-z-]+) \/ \d{4}-\d{2}-\d{2}
+```
+
+Check your changelog using Rubular if you want to be sure:
+http://rubular.com/r/1LTOJe3Upq
 
 ## Contributing
 
