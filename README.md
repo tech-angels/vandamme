@@ -125,14 +125,19 @@ VERSION CHANGES
 Example in Markdown: 
 
 ```markdown
+# 1.2.4 / Unreleased
+
+* Fix bug #2
+
 # 1.2.3 / 2013-02-14
 
 * Update API 
 * Fix bug #1
 ```
 
-+ LEVEL 1 (or 2) HEADER WITH VERSION AND RELEASE DATE **MUST** of the form ```{{version_number}} / {{release_date}}```
-+ {{release_date}} **MUST** follow the ISO 8601 format: "YYYY-MM-DD"
++ LEVEL 1 (or 2) HEADER WITH VERSION **MUST** at least contain the version number (```{{version_number}}```)
++ If the release date is present, it **MUST** of the form ```{{version_number}} / {{release_date}}```
++ {{release_date}} **MUST** follow the ISO 8601 format: "YYYY-MM-DD", or the text "Unreleased", if present
 + VERSION CHANGES **MAY** contain more levels, but MUST follow the markup syntax.
 
 ### Note
@@ -141,11 +146,11 @@ Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is 
 
 ```
-^#{1,2} ([0-9\.A-Za-z-]+) \/ \d{4}-\d{2}-\d{2}
+^#{1,2} ([0-9\.A-Za-z-]+)\s?\/?\s?(\d{4}-\d{2}-\d{2}|\w+)?
 ```
 
 Check your changelog using Rubular if you want to be sure:
-http://rubular.com/r/NafpawQcRO
+http://rubular.com/r/u5FTZWYtE0
 
 ## Contributing
 
