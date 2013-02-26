@@ -111,11 +111,11 @@ Vandamme is bundled with Redcarpet by default (for markdown), you must add the n
 + Your changelog **MUST** follow the format:
 
 ```
-LEVEL 1 HEADER WITH VERSION AND RELEASE DATE
+LEVEL 1 (or 2) HEADER WITH VERSION AND RELEASE DATE
 
 VERSION CHANGES
 
-LEVEL 1 HEADER WITH VERSION AND RELEASE DATE
+LEVEL 1 (or 2) HEADER WITH VERSION AND RELEASE DATE
 
 VERSION CHANGES
 
@@ -131,7 +131,8 @@ Example in Markdown:
 * Fix bug #1
 ```
 
-+ LEVEL 1 HEADER WITH VERSION AND RELEASE DATE **MUST** of the form ```{{version_number}} / {{release_date}}```
++ LEVEL 1 (or 2) HEADER WITH VERSION AND RELEASE DATE **MUST** of the form ```{{version_number}} / {{release_date}}```
++ {{release_date}} **MUST** follow the ISO 8601 format: "YYYY-MM-DD"
 + VERSION CHANGES **MAY** contain more levels, but MUST follow the markup syntax.
 
 ### Note
@@ -140,11 +141,11 @@ Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is 
 
 ```
-# ([0-9\.A-Za-z-]+) \/ \d{4}-\d{2}-\d{2}
+^#{1,2} ([0-9\.A-Za-z-]+) \/ \d{4}-\d{2}-\d{2}
 ```
 
 Check your changelog using Rubular if you want to be sure:
-http://rubular.com/r/1LTOJe3Upq
+http://rubular.com/r/NafpawQcRO
 
 ## Contributing
 
