@@ -139,6 +139,8 @@ Example in Markdown:
 + If the release date is present, it **MUST** of the form ```{{version_number}} / {{release_date}}```
 + {{release_date}} **MUST** follow the ISO 8601 format: "YYYY-MM-DD", or the text "Unreleased", if present
 + VERSION CHANGES **MAY** contain more levels, but MUST follow the markup syntax.
++ {{version_number}} **SHOULD** follow the [semver](http://semver.org/) convention.
++ {{version_number}} **MUST** contain at least a dot (ex: "1.2").
 
 ### Note
 
@@ -146,7 +148,7 @@ Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is 
 
 ```
-^#{1,2} ([\w\d\.-]+)\s?\/?\s?(\d{4}-\d{2}-\d{2}|\w+)?
+^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?
 ```
 
 Check your changelog using Rubular if you want to be sure:
