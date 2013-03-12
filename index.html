@@ -4,65 +4,222 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Vandamme by tech-angels</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/tech-angels/vandamme">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/tech-angels/vandamme/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/tech-angels/vandamme/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
     <div class="wrapper">
-      <header>
-        <h1 class="header">Vandamme</h1>
-        <p class="header">A Changelog convention and parser</p>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/tech-angels/vandamme/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/tech-angels/vandamme/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/tech-angels/vandamme">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/tech-angels">tech-angels</a></p>
-
-
-      </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <div id="title">
+          <h1>Vandamme</h1>
+          <p>A Changelog convention and parser</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/tech-angels">tech-angels</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <h1>Vandamme</h1>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p><a href="https://gemnasium.com/tech-angels/vandamme"><img src="https://gemnasium.com/tech-angels/vandamme.png" alt="Dependency Status"></a>
+<a href="https://travis-ci.org/tech-angels/vandamme"><img src="https://travis-ci.org/tech-angels/vandamme.png?branch=master" alt="Build Status"></a></p>
+
+<p>Vandamme is a changelog parser gem, used in the <a href="https://gemnasium.com">Gemnasium</a> project.</p>
+
+<p>There are thousands of different changelogs (if any) out there, with dozens of different names. 
+It's almost impossible to fetch and parse them automatically... Gemnasium is using Vandamme to 
+keep each changelog specificities (changelog location, version format, file format).</p>
+
+<p>We really believe in changelogs. Following changes in dependencies is a hard task, and almost impossible
+by reading commits only.</p>
+
+<p>The opensource world would be so much nicer with full, readable and comprehensive changelogs. 
+As a solution to this problem, we propose a simple set of rules and requirements to follow in order to have a 
+Standard Changelog. Please see the <a href="#changelogs-convention">Changelogs Convention</a> section below.</p>
+
+<p>Stay aware of changes!</p>
+
+<h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'vandamme'
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>And then execute:</p>
 
-<h3>Designer Templates</h3>
+<pre><code>$ bundle
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Or install it yourself as:</p>
 
-<h3>Rather Drive Stick?</h3>
+<pre><code>$ gem install vandamme
+</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h2>Usage</h2>
 
-<h3>Authors and Contributors</h3>
+<p>The Parser initializer will use 3 options:</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ul>
+<li>
+<strong>:changelog</strong>: full raw content of the changelog file</li>
+<li>
+<strong>:version_header_exp</strong>: regexp to match the versions lines in changelog</li>
+<li>
+<strong>:format</strong> (*optional*): if you want to use the html converter, you must provide the original format of the changelog. (default: 'raw')</li>
+<li>
+<strong>:group_match</strong> (*optional*): Number of the match group is used for version matching. (default: 0)</li>
+</ul><h3>Regex format</h3>
 
-<h3>Support or Contact</h3>
+<p><strong>version_header_exp</strong> will be converted to a new Regex object if it wasn't one.
+Therefore, </p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<pre><code>Vandamme::Parser.new(changelog: changelog, version_header_exp: '\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)')
+</code></pre>
+
+<p>is equivalent to:</p>
+
+<pre><code>Vandamme::Parser.new(changelog: changelog, version_header_exp: /\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)/)
+</code></pre>
+
+<p>Be careful with how ruby is handling escaped caracters in a string: <code>"\d"</code> if different from <code>'\d'</code>!</p>
+
+<h3>Version Matching</h3>
+
+<p>By default, the first match of the Regexp will be considered as the version number.
+ie:</p>
+
+<pre><code>'Release (\d+\.\d+\.\d+)'
+</code></pre>
+
+<p>will match lines like:</p>
+
+<pre><code>Release 1.3.5
+</code></pre>
+
+<p>and '1.3.5' will be used as a key in the Hash returned by the <code>parse</code> method.
+Starting Vandamme 0.0.2, it's possible to specify which match group must be
+used for the version number, by passing the option <strong>:match_group</strong> to the
+initializer:</p>
+
+<pre><code>Vandamme::Parser.new([...], :matching_group =&gt; 1)
+</code></pre>
+
+<p>The default match group is 0: this is the first group matched (0 being the
+original string), because we are using <code>String#scan</code> instead of <code>Regexp.match</code>.</p>
+
+<h2>Examples</h2>
+
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s1">'vandamme'</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+<span class="n">changelog</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'https://raw.github.com/flori/json/master/CHANGES'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="ss">Vandamme</span><span class="p">:</span><span class="ss">:Parser</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">changelog</span><span class="p">:</span> <span class="n">changelog</span><span class="p">,</span> <span class="n">version_header_exp</span><span class="p">:</span> <span class="s1">'\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)'</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="s1">'markdown'</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">parse</span>
+</pre></div>
+
+<p>will return a hash with each version as keys, and version content as value.
+The hash can be converted to html (using the <a href="https://github.com/github/markup">github-markup</a> gem):</p>
+
+<div class="highlight"><pre><span class="n">parser</span><span class="o">.</span><span class="n">to_html</span>
+</pre></div>
+
+<p>Vandamme is bundled with Redcarpet by default (for markdown), you must add the necessary gems to your bundle if you want to handle more formats.</p>
+
+<h2>Changelogs Convention</h2>
+
+<h3>Filename</h3>
+
+<ul>
+<li>Your changelog file <strong>MUST</strong> be named CHANGELOG.format (preferably <code>CHANGELOG.md</code>)</li>
+<li>Your changelog file <strong>MUST</strong> be at the root of your project</li>
+<li>You <strong>MAY</strong> have different changelog in each branch (like <a href="https://github.com/rails/rails">Ruby on Rails</a>)</li>
+</ul><h3>Format</h3>
+
+<ul>
+<li>Your changelog <strong>MUST</strong> be in plain text formatting syntax. </li>
+<li>You <strong>MUST</strong> use one the supported markup: <a href="https://github.com/github/markup#markups">https://github.com/github/markup#markups</a> </li>
+<li>You <strong>MAY</strong> prefer Markdown (.md) is now the most popular format for READMEs on Github, let's stick to it.</li>
+<li>Your changelog <strong>MUST</strong> follow the format:</li>
+</ul><pre><code>LEVEL 1 (or 2) HEADER WITH VERSION AND RELEASE DATE
+
+VERSION CHANGES
+
+LEVEL 1 (or 2) HEADER WITH VERSION AND RELEASE DATE
+
+VERSION CHANGES
+
+[...]
+</code></pre>
+
+<p>Example in Markdown: </p>
+
+<pre lang="markdown"><code># 1.2.4 / Unreleased
+
+* Fix bug #2
+
+# 1.2.3 / 2013-02-14
+
+* Update API 
+* Fix bug #1
+</code></pre>
+
+<ul>
+<li>LEVEL 1 (or 2) HEADER WITH VERSION <strong>MUST</strong> at least contain the version number (<code>{{version_number}}</code>)</li>
+<li>If the release date is present, it <strong>MUST</strong> of the form <code>{{version_number}} / {{release_date}}</code>
+</li>
+<li>{{release_date}} <strong>MUST</strong> follow the ISO 8601 format: "YYYY-MM-DD", or the text "Unreleased", if present</li>
+<li>VERSION CHANGES <strong>MAY</strong> contain more levels, but MUST follow the markup syntax.</li>
+<li>{{version_number}} <strong>SHOULD</strong> follow the <a href="http://semver.org/">semver</a> convention.</li>
+<li>{{version_number}} <strong>MUST</strong> contain at least a dot (ex: "1.2").</li>
+</ul><h3>Note</h3>
+
+<p>Changelogs following these rules will be automatically included in Gemnasium.
+The regexp used is </p>
+
+<pre><code>^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?
+</code></pre>
+
+<p>Check your changelog using Rubular if you want to be sure:
+<a href="http://rubular.com/r/u5FTZWYtE0">http://rubular.com/r/u5FTZWYtE0</a></p>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol><h2>Credits</h2>
+
+<p>Philippe Lafoucrière @ Tech-angels - <a href="http://www.tech-angels.com/">http://www.tech-angels.com/</a></p>
+
+<p><a href="http://www.tech-angels.com"><img src="http://media.tumblr.com/tumblr_m5ay3bQiER1qa44ov.png" alt="Tech-Angels"></a></p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
+
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		          <script type="text/javascript">
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
