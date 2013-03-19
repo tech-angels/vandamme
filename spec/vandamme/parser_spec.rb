@@ -5,9 +5,9 @@ describe Vandamme::Parser do
     let(:changelog_file) { File.read("spec/fixtures/json.md") }
     let(:changelog_as_hash) {
       {
-        "1.7.6"=> "  * Add GeneratorState#merge alias for JRuby, fix state accessor methods. Thx to\n   jvshahid@github.\n  * Increase hash likeness of state objects.\n",
-        "1.7.5"=> "  * Fix compilation of extension on older rubies.\n",
-        "1.7.4"=> "  * Fix compilation problem on AIX, see https://github.com/flori/json/issues/142\n"
+        "1.7.6"=> "  * Add GeneratorState#merge alias for JRuby, fix state accessor methods. Thx to\n   jvshahid@github.\n  * Increase hash likeness of state objects.",
+        "1.7.5"=> "  * Fix compilation of extension on older rubies.",
+        "1.7.4"=> "  * Fix compilation problem on AIX, see https://github.com/flori/json/issues/142"
       }
     }
 
@@ -37,11 +37,11 @@ describe Vandamme::Parser do
     let(:changelog_file) { File.read("spec/fixtures/postmark-gem.rdoc") }
     let(:changelog_as_hash) {
       {
-        "0.9.15" => "* Save a received MessageID in message headers.\n",
-        "0.9.14" => "* Parse Subject and MessageID from the Bounce API response.\n",
-        "0.9.13" => "* Added error_code to DeliveryError\n* Added retries for Timeout::Error\n",
-        "0.9.12" => "* Fixed a problem of attachments processing when using deliver! method on Mail object.\n* Removed activesupport dependency for Postmark::AttachmentsFixForMail.\n* Added specs for AttachmentFixForMail.\n",
-        "0.9.11" => "* Replaced Jeweler by Bundler.\n* Updated RSpec to 2.8.\n* Fixed specs.\n* Refactored the codebase.\n"
+        "0.9.15" => "* Save a received MessageID in message headers.",
+        "0.9.14" => "* Parse Subject and MessageID from the Bounce API response.",
+        "0.9.13" => "* Added error_code to DeliveryError\n* Added retries for Timeout::Error",
+        "0.9.12" => "* Fixed a problem of attachments processing when using deliver! method on Mail object.\n* Removed activesupport dependency for Postmark::AttachmentsFixForMail.\n* Added specs for AttachmentFixForMail.",
+        "0.9.11" => "* Replaced Jeweler by Bundler.\n* Updated RSpec to 2.8.\n* Fixed specs.\n* Refactored the codebase."
       }
     }
 
@@ -83,8 +83,8 @@ describe Vandamme::Parser do
       }
     let(:changelog_as_hash) {
       {
-        "1.0.0" => "* First stable version.\n",
-        "0.9.9" => "* Last Beta before stable.\n"
+        "1.0.0" => "* First stable version.",
+        "0.9.9" => "* Last Beta before stable."
       }
     }
 

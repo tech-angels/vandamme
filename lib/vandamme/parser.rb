@@ -32,7 +32,7 @@ module Vandamme
         version_content = $~.post_match
         changelog_scanner = StringScanner.new(version_content)
         changelog_scanner.scan_until(@version_header_exp)
-        @changelog_hash[match[@match_group]]= (changelog_scanner.pre_match || version_content).gsub(/^\n+/, '')
+        @changelog_hash[match[@match_group]] = (changelog_scanner.pre_match || version_content).gsub(/(\A\n+|\n+\z)/, '')
       end
       @changelog_hash
     end
@@ -44,7 +44,7 @@ module Vandamme
     # for more formats. The corresponding gem must be bundled.
     def to_html
       self.parse if @changelog_hash.empty?
-      # GitHub Markup API is really weird, we MUST pass a file name for format detection:
+      # GitHub Markup API is really weird, we MUST pass a file name for format detection as 1st arg:
       @changelog_hash.inject({}) { |h,(k,v)| h[k] = GitHub::Markup.render(".#{@format}", v); h }
     end
   end
