@@ -1,3 +1,7 @@
+# 0.0.3 / 2013-03-19
+
+* Fix html rendering, especially with markdown format
+
 # 0.0.2 / 2013-01-06
 
 * Fix gem dependencies (to githup-markup)
