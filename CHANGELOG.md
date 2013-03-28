@@ -1,3 +1,7 @@
+# 0.0.4 / 2013-03-28
+
+* The parser constructor parameter "version_header_exp" is now optional, and will default to changelog convention regexp.
+
 # 0.0.3 / 2013-03-19
 
 * Fix html rendering, especially with markdown format

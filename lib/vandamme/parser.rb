@@ -4,17 +4,21 @@ require 'github/markup'
 module Vandamme
   class Parser
 
+    DEFAULT_REGEXP = Regexp.new('^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?')
+
     # Create a new changelog parser
     #
     # Options:
     # * +changelog+:: Changelog content as a +String+.
-    # * +version_header_exp+:: regexp to match the starting line of version.
+    # * +version_header_exp+ (optional):: regexp to match the starting line of version.
+    #   Defaults to /^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?/
+    #   See http://tech-angels.github.com/vandamme/#changelogs-convention
     # * +format+ (optional):: One of "raw", "markdown", "rdoc"
     #
     # 
     def initialize(options={})
       @changelog          = options.fetch :changelog
-      regexp              = options.fetch :version_header_exp
+      regexp              = options[:version_header_exp] || DEFAULT_REGEXP
       @version_header_exp = regexp.is_a?(Regexp) ? regexp : Regexp.new(/#{regexp}/)
       @match_group        = options[:match_group] || 0
       @format             = options[:format] || :raw
