@@ -4,7 +4,7 @@ require 'github/markup'
 module Vandamme
   class Parser
 
-    DEFAULT_REGEXP = Regexp.new('^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+[a-z0-9]) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?')
+    DEFAULT_REGEXP = Regexp.new('^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9]) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?')
 
     # Create a new changelog parser
     #
