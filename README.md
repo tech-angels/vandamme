@@ -148,7 +148,7 @@ Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is 
 
 ```
-^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?
+^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+[0-z]) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?
 ```
 
 Check your changelog using Rubular if you want to be sure:
