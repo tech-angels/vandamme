@@ -1,3 +1,7 @@
+# 0.0.5 / unreleased
+
+* Fix default regexp for trailing chars in version number. (@nzwsch)
+
 # 0.0.4 / 2013-03-28
 
 * The parser constructor parameter "version_header_exp" is now optional, and will default to changelog convention regexp.
