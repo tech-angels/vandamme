@@ -1,0 +1,27 @@
+= Changelog
+
+== 0.9.15
+
+* Save a received MessageID in message headers.
+
+== 0.9.14
+
+* Parse Subject and MessageID from the Bounce API response.
+
+== 0.9.13
+
+* Added error_code to DeliveryError
+* Added retries for Timeout::Error
+
+== 0.9.12
+
+* Fixed a problem of attachments processing when using deliver! method on Mail object.
+* Removed activesupport dependency for Postmark::AttachmentsFixForMail.
+* Added specs for AttachmentFixForMail.
+
+== 0.9.11
+
+* Replaced Jeweler by Bundler.
+* Updated RSpec to 2.8.
+* Fixed specs.
+* Refactored the codebase.
