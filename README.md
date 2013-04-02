@@ -142,6 +142,23 @@ Example in Markdown:
 + {{version_number}} **SHOULD** follow the [semver](http://semver.org/) convention.
 + {{version_number}} **MUST** contain at least a dot (ex: "1.2").
 
+### Keywords
+
+Usage of keywords is strongly recommanded, as it helps to identify the nature of each change.
+Keywords should be a one-word tag, in caps, preceding each change line:
+
+```markdown
+# 1.2.4 / Unreleased
+
+* [BUGFIX] Fix bug #2
+* [FEATURE] Add github oauth login
+* [PERFORMANCE] Now 25% faster!
+```
+
++ Keyword, if present, **MUST** be in caps, at beginning of line, and surrounded with square brackets.
++ Keyword **SHOULD** be preferably among: "SECURITY", "BUGFIX", "FEATURE", "ENHANCEMENT", "PERFORMANCE"
+
+
 ### Note
 
 Changelogs following these rules will be automatically included in Gemnasium.
