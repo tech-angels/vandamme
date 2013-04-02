@@ -192,12 +192,27 @@ VERSION CHANGES
 <li>VERSION CHANGES <strong>MAY</strong> contain more levels, but MUST follow the markup syntax.</li>
 <li>{{version_number}} <strong>SHOULD</strong> follow the <a href="http://semver.org/">semver</a> convention.</li>
 <li>{{version_number}} <strong>MUST</strong> contain at least a dot (ex: "1.2").</li>
+</ul><h3>Keywords</h3>
+
+<p>Usage of keywords is strongly recommanded, as it helps to identify the nature of each change.
+Keywords should be a one-word tag, in caps, preceding each change line:</p>
+
+<pre lang="markdown"><code># 1.2.4 / Unreleased
+
+* [BUGFIX] Fix bug #2
+* [FEATURE] Add github oauth login
+* [PERFORMANCE] Now 25% faster!
+</code></pre>
+
+<ul>
+<li>Keyword, if present, <strong>MUST</strong> be in caps, at beginning of line, and surrounded with square brackets.</li>
+<li>Keyword <strong>SHOULD</strong> be preferably among: "SECURITY", "BUGFIX", "FEATURE", "ENHANCEMENT", "PERFORMANCE"</li>
 </ul><h3>Note</h3>
 
 <p>Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is </p>
 
-<pre><code>^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?
+<pre><code>^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?
 </code></pre>
 
 <p>Check your changelog using Rubular if you want to be sure:
