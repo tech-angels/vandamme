@@ -165,7 +165,7 @@ Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is 
 
 ```
-^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?
+^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*
 ```
 
 Check your changelog using Rubular if you want to be sure:

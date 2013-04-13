@@ -145,4 +145,45 @@ describe Vandamme::Parser do
       expect(@changelog_parsed).to eq(changelog_as_hash)
     end
   end
+
+  context "Alternative markdown headers syntax" do
+    let(:changelog_file) { 
+      <<-eos
+Changelog
+=========
+
+X.Y.Z / Unreleased
+------------------
+
+* Update API 
+* Fix bug #1
+
+1.2.3-pre.1 / 2013-02-14
+------------------------
+
+* Update API 
+
+1.0.0-x.7.z.92
+--------------
+      eos
+      }
+
+    let(:changelog_as_hash) {
+      {
+        "X.Y.Z"           => "* Update API \n* Fix bug #1",
+        "1.2.3-pre.1"     => "* Update API ",
+        "1.0.0-x.7.z.92"  => ""
+      }
+    }
+
+
+    before do
+      @parser = Vandamme::Parser.new(changelog: changelog_file)
+      @changelog_parsed = @parser.parse
+    end
+
+    it "should parse file and fill changelog hash" do
+      expect(@changelog_parsed).to eq(changelog_as_hash)
+    end
+  end
 end
