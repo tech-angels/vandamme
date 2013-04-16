@@ -212,7 +212,7 @@ Keywords should be a one-word tag, in caps, preceding each change line:</p>
 <p>Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is </p>
 
-<pre><code>^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?
+<pre><code>^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*
 </code></pre>
 
 <p>Check your changelog using Rubular if you want to be sure:
