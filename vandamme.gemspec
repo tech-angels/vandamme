@@ -21,5 +21,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake','~> 10.0.2'
 
   gem.add_dependency 'github-markup', '~> 0.7.5'
-  gem.add_dependency 'redcarpet', '~> 2.2.2'
+  gem.add_dependency 'redcarpet', '3.0.0'
 end
