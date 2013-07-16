@@ -1,6 +1,7 @@
-# 0.0.5 / unreleased
+# 0.0.5 / 2013-07-16
 
 * Fix default regexp for trailing chars in version number. (@nzwsch)
+* Update redcarpet dependency to 3.0.0
 
 # 0.0.4 / 2013-03-28
 
