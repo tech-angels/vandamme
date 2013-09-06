@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'github/markup'
+require 'vandamme/monkey_patch_markup'
 
 module Vandamme
   class Parser
