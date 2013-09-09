@@ -1,3 +1,7 @@
+# 0.0.6 / 2013-09-09
+
+* Ruby 2.0 support
+
 # 0.0.5 / 2013-07-16
 
 * Fix default regexp for trailing chars in version number. (@nzwsch)
