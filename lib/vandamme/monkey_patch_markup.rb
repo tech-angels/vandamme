@@ -1,5 +1,5 @@
 # https://github.com/github/markup/pull/214
-# require "github/markup/rdoc"
+require "github/markup/rdoc"
 
 module GitHub
     module Markup
