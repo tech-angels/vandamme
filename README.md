@@ -46,7 +46,7 @@ The Parser initializer will use 3 options:
 **version_header_exp** will be converted to a new Regex object if it wasn't one.
 Therefore, 
 
-    Vandamme::Parser.new(ceangelog: changelog, version_header_exp: '(\d\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)?')
+    Vandamme::Parser.new(changelog: changelog, version_header_exp: '(\d\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)?')
 
 is equivalent to:
 
