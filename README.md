@@ -46,11 +46,11 @@ The Parser initializer will use 3 options:
 **version_header_exp** will be converted to a new Regex object if it wasn't one.
 Therefore, 
 
-    Vandamme::Parser.new(changelog: changelog, version_header_exp: '\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)')
+    Vandamme::Parser.new(ceangelog: changelog, version_header_exp: '(\d\.\d+\.\d+) \((\d{4}-\d{2}-\d{2})\)?')
 
 is equivalent to:
 
-    Vandamme::Parser.new(changelog: changelog, version_header_exp: /\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)/)
+    Vandamme::Parser.new(changelog: changelog, version_header_exp: /(\d\.\d+\.\d+) \(\d{4}-\d{2}-\d{2}\)?/)
 
 Be careful with how ruby is handling escaped caracters in a string: ```"\d"``` if different from ```'\d'```!
 
@@ -83,7 +83,7 @@ require 'rubygems'
 require 'vandamme'
 require 'open-uri'
 changelog = open('https://raw.github.com/flori/json/master/CHANGES').read
-parser = Vandamme::Parser.new(changelog: changelog, version_header_exp: '\d{4}-\d{2}-\d{2} \((\d\.\d+\.\d+)\)', format: 'markdown')
+parser = Vandamme::Parser.new(changelog: changelog, version_header_exp: '(\d\.\d+\.\d+) \(\d{4}-\d{2}-\d{2}\)', format: 'markdown')
 parser.parse
 ```
 will return a hash with each version as keys, and version content as value.
