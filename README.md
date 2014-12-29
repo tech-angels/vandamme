@@ -136,8 +136,11 @@ Example in Markdown:
 ```
 
 + LEVEL 1 (or 2) HEADER WITH VERSION **MUST** at least contain the version number (```{{version_number}}```)
-+ If the release date is present, it **MUST** of the form ```{{version_number}} / {{release_date}}```
-+ {{release_date}} **MUST** follow the ISO 8601 format: "YYYY-MM-DD", or the text "Unreleased", if present
++ If the release date is present, it **MUST** follow the form ```{{version_number}} / {{release_date}}```
++ {{release_date}} is optional but  if present it **MUST** follow one of these formats:
+++ the full english style format: "December 14th, 2014" (ordinal suffix is optional)
+++ the ISO 8601 format: "YYYY-MM-DD"
+++ the text "Unreleased"
 + VERSION CHANGES **MAY** contain more levels, but MUST follow the markup syntax.
 + {{version_number}} **SHOULD** follow the [semver](http://semver.org/) convention.
 + {{version_number}} **MUST** contain at least a dot (ex: "1.2").
@@ -165,11 +168,11 @@ Changelogs following these rules will be automatically included in Gemnasium.
 The regexp used is 
 
 ```
-^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*
+^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])(?: \/ (\w+ \d{1,2}(?:st|nd|rd|th)?,\s\d{4}|\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*
 ```
 
 Check your changelog using Rubular if you want to be sure:
-http://rubular.com/r/u5FTZWYtE0
+http://rubular.com/r/Gw6rIS5HkJ
 
 ## Contributing
 

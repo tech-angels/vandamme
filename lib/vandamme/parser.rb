@@ -5,14 +5,14 @@ require 'vandamme/monkey_patch_markup'
 module Vandamme
   class Parser
 
-    DEFAULT_REGEXP = Regexp.new('^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])( \/ (\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*')
+    DEFAULT_REGEXP = Regexp.new('^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])(?: \/ (\w+ \d{1,2}(?:st|nd|rd|th)?,\s\d{4}|\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*')
 
     # Create a new changelog parser
     #
     # Options:
     # * +changelog+:: Changelog content as a +String+.
     # * +version_header_exp+ (optional):: regexp to match the starting line of version.
-    #   Defaults to /^#{1,2} ([\w\d\.-]+\.[\w\d\.-]+) ?\/? ?(\d{4}-\d{2}-\d{2}|\w+)?/
+    #   Defaults to /^#{0,3} ?([\w\d\.-]+\.[\w\d\.-]+[a-zA-Z0-9])(?: \/ (\w+ \d{1,2}(?:st|nd|rd|th)?,\s\d{4}|\d{4}-\d{2}-\d{2}|\w+))?\n?[=-]*/
     #   See http://tech-angels.github.com/vandamme/#changelogs-convention
     # * +format+ (optional):: One of "raw", "markdown", "rdoc"
     #

@@ -123,6 +123,14 @@ describe Vandamme::Parser do
 
 * Update API 
 
+## 1.2.2 / December 3, 2014
+
+* Add something else
+
+## 1.2.1 / December 1st, 2014
+
+* Add something
+
 # 1.0.0-x.7.z.92
       eos
       }
@@ -131,6 +139,8 @@ describe Vandamme::Parser do
       {
         "X.Y.Z"           => "* Update API \n* Fix bug #1",
         "1.2.3-pre.1"     => "* Update API ",
+        "1.2.2"           => "* Add something else",
+        "1.2.1"           => "* Add something",
         "1.0.0-x.7.z.92"  => ""
       }
     }
