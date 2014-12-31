@@ -138,9 +138,9 @@ Example in Markdown:
 + LEVEL 1 (or 2) HEADER WITH VERSION **MUST** at least contain the version number (```{{version_number}}```)
 + If the release date is present, it **MUST** follow the form ```{{version_number}} / {{release_date}}```
 + {{release_date}} is optional but  if present it **MUST** follow one of these formats:
-++ the full english style format: "December 14th, 2014" (ordinal suffix is optional)
-++ the ISO 8601 format: "YYYY-MM-DD"
-++ the text "Unreleased"
+ + the full english style format: "December 14th, 2014" (ordinal suffix is optional)
+ + the ISO 8601 format: "YYYY-MM-DD"
+ + the text "Unreleased"
 + VERSION CHANGES **MAY** contain more levels, but MUST follow the markup syntax.
 + {{version_number}} **SHOULD** follow the [semver](http://semver.org/) convention.
 + {{version_number}} **MUST** contain at least a dot (ex: "1.2").
