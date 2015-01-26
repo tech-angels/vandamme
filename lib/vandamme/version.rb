@@ -1,3 +1,3 @@
 module Vandamme
-  VERSION = "0.0.7"
+  VERSION = "0.0.9"
 end

@@ -1,3 +1,11 @@
+# 0.0.9 / 2015-01-26
+
+* Let non-word character instead of \/ as the separator (#10)
+
+# 0.0.8 / 2014-12-29
+
+* Add support for full english date format (#10)
+
 # 0.0.7 / 2013-09-09
 
 * Fix Ruby 2.0 support
