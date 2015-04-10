@@ -1,3 +1,7 @@
+# 0.0.10 / 2015-04-10
+
+* Bump redcarpet dependency (OSVDB-120415)
+
 # 0.0.9 / 2015-01-26
 
 * Let non-word character instead of \/ as the separator (#10)
