@@ -1,3 +1,7 @@
+# 0.0.11 / 2015-09-08
+
+* Bump redcarpet dependency (CVE-2015-5147)
+
 # 0.0.10 / 2015-04-10
 
 * Bump redcarpet dependency (OSVDB-120415)
