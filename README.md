@@ -1,7 +1,7 @@
 # Vandamme
 
-[![Dependency Status](https://gemnasium.com/tech-angels/vandamme.png)](https://gemnasium.com/tech-angels/vandamme)
-[![Build Status](https://travis-ci.org/tech-angels/vandamme.png?branch=master)](https://travis-ci.org/tech-angels/vandamme)
+[![Dependency Status](https://gemnasium.com/tech-angels/vandamme.svg)](https://gemnasium.com/tech-angels/vandamme)
+[![Build Status](https://travis-ci.org/tech-angels/vandamme.svg?branch=master)](https://travis-ci.org/tech-angels/vandamme)
 
 Vandamme is a changelog parser gem, used in the [Gemnasium](https://gemnasium.com) project.
 
