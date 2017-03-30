@@ -1,3 +1,7 @@
+# 0.0.12 / 2016-03-30
+
+* Replace redcarpet dependency with Commonmarker for markdown parsing
+
 # 0.0.11 / 2015-09-08
 
 * Bump redcarpet dependency (CVE-2015-5147)
