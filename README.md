@@ -93,7 +93,7 @@ The hash can be converted to html (using the [github-markup](https://github.com/
 parser.to_html
 ```
 
-Vandamme is bundled with Redcarpet by default (for markdown), you must add the necessary gems to your bundle if you want to handle more formats.
+Vandamme is bundled with [Commonmarker](https://github.com/gjtorikian/commonmarker) by default (for markdown), you must add the necessary gems to your bundle if you want to handle more formats.
 
 ## Changelogs Convention
 
