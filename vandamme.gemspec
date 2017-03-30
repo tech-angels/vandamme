@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Vandamme is aware of files content, and will be mostly used to parse changelog files and extract relevant content.}
   gem.summary       = %q{Be aware of changelogs content}
   gem.homepage      = "http://tech-angels.github.com/vandamme/"
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
