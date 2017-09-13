@@ -1,6 +1,6 @@
 language: ruby
 dist: trusty
 rvm:
-  - 1.9.3
   - 2.0.0
+  - 2.4.1
   - ruby-head
