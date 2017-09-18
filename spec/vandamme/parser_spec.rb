@@ -15,7 +15,7 @@ describe Vandamme::Parser do
       {
         "1.7.6"=> "<ul>\n<li>Add GeneratorState#merge alias for JRuby, fix state accessor methods. Thx to\njvshahid@github.</li>\n<li>Increase hash likeness of state objects.</li>\n</ul>\n",
         "1.7.5"=> "<ul>\n<li>Fix compilation of extension on older rubies.</li>\n</ul>\n",
-        "1.7.4"=> "<ul>\n<li>Fix compilation problem on AIX, see https://github.com/flori/json/issues/142</li>\n</ul>\n"
+        "1.7.4"=> "<ul>\n<li>Fix compilation problem on AIX, see <a href=\"https://github.com/flori/json/issues/142\">https://github.com/flori/json/issues/142</a></li>\n</ul>\n"
       }
     }
 
