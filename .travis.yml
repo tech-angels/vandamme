@@ -4,3 +4,5 @@ rvm:
   - 2.0.0
   - 2.4
   - ruby-head
+cache:
+  bundler: true
