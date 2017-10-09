@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Vandamme::Parser do
+  context "both match_group and custom_hash_filler are provided" do
+    it "raises an ArgumentError" do
+      expect {
+        Vandamme::Parser.new(
+          changelog: '',
+          match_group: 1,
+          custom_hash_filler: -> {}
+        )
+      }.to raise_error(ArgumentError, /only one of match_group or custom_hash_filler should be given/)
+    end
+  end
   context "with json gem changelog" do
     let(:changelog_file) { File.read("spec/fixtures/json.md") }
     let(:changelog_as_hash) {
@@ -178,22 +189,76 @@ X.Y.Z / Unreleased
       eos
       }
 
-    let(:changelog_as_hash) {
-      {
-        "X.Y.Z"           => "* Update API \n* Fix bug #1",
-        "1.2.3-pre.1"     => "* Update API ",
-        "1.0.0-x.7.z.92"  => ""
-      }
-    }
-
-
-    before do
-      @parser = Vandamme::Parser.new(changelog: changelog_file)
-      @changelog_parsed = @parser.parse
+    let(:hash_filler) { nil }
+    let(:parser) do
+      Vandamme::Parser.new(
+        changelog: changelog_file,
+        format: 'markdown',
+        custom_hash_filler: hash_filler
+      )
     end
 
-    it "should parse file and fill changelog hash" do
-      expect(@changelog_parsed).to eq(changelog_as_hash)
+    describe "#parse" do
+      subject(:parsed) { parser.parse }
+
+      context "no blocks are given" do
+        let(:changelog_as_hash) {
+          {
+            "X.Y.Z"           => "* Update API \n* Fix bug #1",
+            "1.2.3-pre.1"     => "* Update API ",
+            "1.0.0-x.7.z.92"  => ""
+          }
+        }
+        let(:changelog_as_html_hash) {
+          {
+            "X.Y.Z" => "<ul>\n<li>Update API</li>\n<li>Fix bug #1</li>\n</ul>\n",
+            "1.2.3-pre.1" => "<ul>\n<li>Update API</li>\n</ul>\n",
+            "1.0.0-x.7.z.92" => ""
+          }
+        }
+
+        it "should parse file and fill changelog hash" do
+          expect(parsed).to eq(changelog_as_hash)
+        end
+
+        it "renders to_html" do
+          expect(parser.to_html).to eq(changelog_as_html_hash)
+        end
+      end
+
+      context "blocks are given" do
+        let(:hash_filler) do
+          ->(result, header_match, content) do
+            result[header_match[0]] = { date: header_match[1], content: content }
+          end
+        end
+        let(:content_getter) do
+          ->(hash) { hash[:content] }
+        end
+        let(:changelog_as_hash) {
+          {
+            "X.Y.Z"           => { date: "Unreleased", content: "* Update API \n* Fix bug #1" },
+            "1.2.3-pre.1"     => { date: "2013-02-14", content: "* Update API "},
+            "1.0.0-x.7.z.92"  => { date: nil, content: ""},
+          }
+        }
+        let(:changelog_as_html_hash) {
+          {
+            "X.Y.Z" => "<ul>\n<li>Update API</li>\n<li>Fix bug #1</li>\n</ul>\n",
+            "1.2.3-pre.1" => "<ul>\n<li>Update API</li>\n</ul>\n",
+            "1.0.0-x.7.z.92" => ""
+          }
+        }
+
+        it "should parse file and fill custom changelog hash" do
+          expect(parsed).to eq(changelog_as_hash)
+        end
+
+        it "renders to_html" do
+          expect(parser.to_html(&content_getter)).to eq(changelog_as_html_hash)
+        end
+      end
     end
+
   end
 end
