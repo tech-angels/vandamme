@@ -6,4 +6,5 @@ rvm:
   - ruby-head
 cache:
   bundler: true
-before_install: gem update --system
+before_install:
+  - bash -c "yes | gem uninstall rake"
