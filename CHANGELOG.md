@@ -1,3 +1,7 @@
+# 0.0.13 / 2018-03-14
+
+* Updating each dependencies according to Gemnasium
+
 # 0.0.12 / 2016-03-30
 
 * Replace redcarpet dependency with Commonmarker for markdown parsing

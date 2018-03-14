@@ -6,3 +6,5 @@ rvm:
   - ruby-head
 cache:
   bundler: true
+before_install:
+  - gem install bundler
