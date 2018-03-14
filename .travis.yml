@@ -7,4 +7,4 @@ rvm:
 cache:
   bundler: true
 before_install:
-  - bash -c "yes | gem uninstall rake"
+  - gem install bundler
